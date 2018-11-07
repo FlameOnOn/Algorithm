@@ -1,12 +1,6 @@
 
 public class OnewayList {
-	class Node{
-		public int data ;
-		public Node next ;
-		public Node(int data){
-			this.data = data ;
-		}
-	}
+	
 	
 	public Node head ;
 	public Node current ;
@@ -25,9 +19,10 @@ public class OnewayList {
 	public void print(Node node){
 		if (node == null)
 			return ;
-		current = node ;
+		System.out.print(node.data) ;
+		current = node.next ;
 		while(current != null){
-			System.out.print(current.data);
+			System.out.print("-" + current.data);
 			current = current.next;
 		}
 	}
@@ -56,6 +51,18 @@ public class OnewayList {
 		}
 	}
 	
+	public int size(){
+		int count = 0 ;
+		if (head == null)
+			return 0 ;
+		current = head ;
+		while(current != null){
+			count++ ;
+			current = current.next ;
+		}
+		return count ;
+	}
+	
 	
 	public static void main(String args[]){
 		OnewayList list = new OnewayList() ;
@@ -69,6 +76,14 @@ public class OnewayList {
 		list.delete(5);
 		System.out.println() ;
 		list.print(list.head);
+	}
+}
+
+class Node{
+	public int data ;
+	public Node next ;
+	public Node(int data){
+		this.data = data ;
 	}
 }
 

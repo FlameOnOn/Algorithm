@@ -27,21 +27,29 @@ public class SeparateList {
 	private static void separateList(OnewayList list, int pivot) {
 		Node leftHead = new Node(0) ;
 		Node rightHead = new Node(0) ;
-		Node leftHeadCurrent = leftHead ;
-		Node rightHeadCurrent = rightHead ;
+		Node leftCurrent = leftHead ;
+		Node rightCurrent = rightHead ;
 		list.current = list.head ;
 		while(list.current != null){
 			if(list.current.data < pivot){
-				leftHeadCurrent.next = list.current ;
-				leftHeadCurrent = list.current;
+				leftCurrent.next = list.current ;
+				leftCurrent = list.current;
+				list.current.next = null ;
 			}else{
-				rightHeadCurrent.next = list.current ;
-				rightHeadCurrent = list.current ;
+				rightCurrent.next = list.current ;
+				rightCurrent = list.current ;
+				list.current = null ;
 			}
 			
 			list.current = list.current.next ;
 		}
-		leftHeadCurrent.next = rightHead.next;
-		rightHeadCurrent = null ;
-		list.head = leftHead ;
+		leftCurrent.next = rightHead.next;
+		rightCurrent = null ;
+		list.head = leftHead.next ;
 	}
+	
+	
+	
+	
+}
+

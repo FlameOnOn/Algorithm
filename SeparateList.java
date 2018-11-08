@@ -34,17 +34,15 @@ public class SeparateList {
 			if(list.current.data < pivot){
 				leftCurrent.next = list.current ;
 				leftCurrent = list.current;
-				list.current.next = null ;
 			}else{
 				rightCurrent.next = list.current ;
 				rightCurrent = list.current ;
-				list.current = null ;
 			}
 			
 			list.current = list.current.next ;
 		}
 		leftCurrent.next = rightHead.next;
-		rightCurrent = null ;
+		rightCurrent.next = null ;
 		list.head = leftHead.next ;
 	}
 	

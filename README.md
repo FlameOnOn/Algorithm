@@ -1,1 +1,1 @@
-#This is the my java code realization about some algorithms.
+#This is the java code realization about some algorithms.

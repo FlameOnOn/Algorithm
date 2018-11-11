@@ -38,10 +38,6 @@ public class TopologicalSort {
 			if (inDgree[i] == 0)
 				queue.offer(i) ;
 		}
-		
-		/*for (int i : queue){
-			System.out.print(i);
-		}*/
 	
 		while(!queue.isEmpty()){
 			int curr = queue.poll() ;

@@ -1,5 +1,5 @@
 import java.util.Stack;
-
+//LCS的应用可以用来求LIS，最长递增子序列，先拍个序再去求LCS就可以了。LIS其实可以用O［nlogn］的复杂度来求出来
 public class DPLcs {
 	public static void main(String args[]){
 		String[] x = {"A","B","C","B","D","A","B"} ;

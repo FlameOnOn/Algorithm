@@ -1,3 +1,6 @@
+//给定一个句子，要求把词的顺序调整一下，比如， I love java 变成 java love I,那就是这种思路，先是 I  evol avaj, 然后是java love I. 以空格或者tab符号
+//当做分隔符来做就可以了。
+
 public class LeftRotateString {
 	public static void main(String args[]){
 		String s = "abcdef" ;

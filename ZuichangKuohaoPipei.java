@@ -1,3 +1,4 @@
+// this has a O(1) spatial complexity sulution, to use an int value instead of a stack to realize it.
 public class ZuichangKuohaoPipei {
 	public static void main(String args[]){
 		String s = "((()))()())(" ;

@@ -22,6 +22,8 @@ public class KuoHaoPiPei {
 							(s.charAt(i) == ']' && firstElement == '[') ||
 							(s.charAt(i) == '}' && firstElement == '{')){
 						continue ;
+					}else{
+						return false ;
 					}
 				}
 			}

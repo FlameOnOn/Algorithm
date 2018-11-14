@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 //求解最长公共子串，可以用递归，或者用循环和subString 和contains做。其实两者是一样的。或者用球最长公共子序列的思路，用dp做一个二维数组。
 public class LongestCommonSubstring {
 	public static void main(String args[]){

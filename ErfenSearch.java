@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Random;
+
 public class ErfenSearch {
 	public static void main(String args[]){
 		int test[] = new int[10] ;

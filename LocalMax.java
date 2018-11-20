@@ -7,12 +7,12 @@ public class LocalMax {
 	private static int getLocalMax(int[] text) {
 		int left = 0 ; 
 		int right = text.length - 1 ;
-		int mid = (left + right) / 2 ;
 		while(left < right){
+			int mid = (left + right) / 2 ;
 			if(text[mid] <= text[mid + 1]){
-				left = text[mid + 1] ;
+				left = mid + 1 ;
 			}else{
-				right = text[mid] ;
+				right = mid ;
 			}
 		}
 		

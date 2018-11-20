@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class JueDuiZhongshu {
 	public static void main(String args[]){
 		int text[] = {1,2,5,2,6,2,3,4,2,2,2,2} ;

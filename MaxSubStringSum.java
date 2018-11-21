@@ -3,8 +3,29 @@ public class MaxSubStringSum {
 	public static void main(String args[]){
 		int text[] = {1,-2,3,10,-4,7,2,-5} ;
 		System.out.println("The max value of subString of text is " + getMaxSubString(text));
+		System.out.println("The max sum of text substring is " + getMaxSubStringDp(text)) ;
 	}
 	
+
+	//用动态规划可以O(N)的时间复杂度实现。
+	private static int getMaxSubStringDp(int[] text) {
+		int sum[] = new int[text.length] ;
+		int result = -1 ;
+		sum[0] = text[0] ;
+		for(int i = 1 ; i < text.length ; i++){
+			if(sum[i-1]  > 0){
+				sum[i] = sum[i-1] + text[i] ;
+			}else{
+				sum[i] = text[i] ;
+			}
+			if (sum[i] > result){
+				result = sum[i] ;
+			}
+		}
+		
+		return result ;
+	}
+
 
 	private static int getMaxSubString(int[] text) {
 		int sum[] = new int[text.length] ;

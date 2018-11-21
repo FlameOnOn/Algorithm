@@ -7,7 +7,7 @@ public class MaxSubStringSum {
 	}
 	
 
-	//用动态规划可以O(N)的时间复杂度实现。
+	//用动态规划可以O(N)的时间复杂度实现。找以a[i]为结尾的最大子数组的和
 	private static int getMaxSubStringDp(int[] text) {
 		int sum[] = new int[text.length] ;
 		int result = -1 ;

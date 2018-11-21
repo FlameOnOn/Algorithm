@@ -1,7 +1,6 @@
-
 public class FirstMissingInteger {
 	public static void main(String args[]){
-		int text[] = {1,3,5,6,7,8,2,9,14} ;
+		int text[] = {1,3,2,4,7,8,9,14} ;
 		System.out.println("The first missing element is " + getFirstMissingInteger(text));
 	}
 
@@ -13,12 +12,12 @@ public class FirstMissingInteger {
 		while(i <= size){
 			if(text[i - 1] == i){
 				i++ ;
+			}else if(text[i -1] < i || text[i-1] > text.length ||
+					text[i-1] <= 0 || text[i-1] == text[text[i-1]-1]){ //如果不加text[i-1] == text[text[i-1]-1]这个条件的话，就死循环了。这个是肯定需要删除的，
+				text[i-1] = text[size - 1] ;                           //这个条件肯定得加，比如t[3]=5, 5应该放到t[5]的位置。所以位置3和位置5应该交换，但如果这时候5的位置上已经
+				size-- ;                                               //存了5，那就把t[3]这个删掉就行了。5的位置上已经存了5，干嘛要动他
 			}else if(text[i - 1] > i){
 				swap(text , i - 1 , text[i-1]-1) ;
-			}else if(text[i -1] < i || text[i-1] > text.length ||
-					text[i-1] <= 0){
-				text[i-1] = text[size - 1] ;
-				size-- ;
 			}
 		}
 		return i ;

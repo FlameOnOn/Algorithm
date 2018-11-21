@@ -1307,3 +1307,4 @@ Eratosthenes筛
 比如比较两个文本的相似度，可以用LCS来看，但是如果文本巨大，那就做两个辞典，搞出两个向量，词出现了为1，不出现为0，计算这两个向量的夹角余贤。问题的规模会导致算法的不同。
 实际上并不用KMP，而是用BM算法。
 树和图之类的问题，都是有套路的。
+StringBuilder 和 StringBuffer的区别，statement 和prepare statement的区别

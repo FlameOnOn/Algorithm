@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MaxSubStringSum {
 
 	public static void main(String args[]){
@@ -12,15 +14,16 @@ public class MaxSubStringSum {
 		int sum[] = new int[text.length] ;
 		int result = -1 ;
 		sum[0] = text[0] ;
-		int from = 0 , to = 0 ;
+		int from = 0 , to = 0 , fromNew = 0;
 		for(int i = 1 ; i < text.length ; i++){
 			if(sum[i-1]  > 0){
 				sum[i] = sum[i-1] + text[i] ;
 			}else{
 				sum[i] = text[i] ;
-				from = i ;
-			}
+				fromNew = i ;  //这里回更新from，即使不满足条件sum[i] > result，from也被更新了，所以应该用一个外面的
+			}                   //from把这个值存一下。
 			if (sum[i] > result){
+				from = fromNew ;
 				result = sum[i] ;
 				to = i ;
 			}

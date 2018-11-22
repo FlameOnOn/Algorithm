@@ -6,7 +6,7 @@ public class HollandFlag {
 			System.out.print(i + "|") ;
 		}
 	}
-        //或者用快速排序的partition思想，两次partition就可以搞定荷兰国旗
+        //或者用快速排序的partition思想，两次partition就可以搞定荷兰国旗，能保证算法时间复杂度是nlogn的
 	private static void getHollanFlag(int[] text) {
 		int current = 0 , begin = 0 , end = text.length - 1 ;
 		while(current <= end){

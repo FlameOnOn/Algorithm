@@ -1,4 +1,3 @@
-
 public class BinaryTree {
 	public TreeNode root ;
 	
@@ -74,6 +73,85 @@ public class BinaryTree {
 			return insertRecursive(node.leftNode , value) ;
 		}
 		return false ; //如果节点已经存在，就返回false。
+		
+	}
+	
+	public boolean deleteChildless(TreeNode parent , TreeNode node){
+		if(node == root){
+			root = null ;
+			return true ;
+		}
+		
+		if(parent.leftNode == node){
+			parent.leftNode = null ;
+			return true ;
+		}
+		if(parent.rightNode == node){
+			parent.rightNode = null ;
+			return true ;
+		}
+		return false ;
+			
+	}
+	
+	public boolean deleteSingleSon(TreeNode parent , TreeNode node){
+		TreeNode grandSon = node.leftNode == null? node.rightNode : node.leftNode ;
+		if (root == node){
+			root = grandSon ;
+			return true ;
+		}
+		if (parent.leftNode == node){
+			parent.leftNode = grandSon ;
+			return true ;
+		}
+		if (parent.rightNode == node){
+			parent.rightNode = grandSon ;
+			return true ;
+		}
+		return false ;
+	}
+	
+	public boolean delete(int value){
+		if(root == null)
+			return false ;
+		
+		TreeNode node = root ;
+		TreeNode parent = root ;
+		while(node != null){
+			if (node.data < value){
+				node = node.rightNode ;
+				parent = node ;
+			}else if (node.data > value){
+				node = node.leftNode ;
+				parent = node ;
+			}else{
+				break ;
+			}
+		}
+		
+		if(node == null)
+			return false ;
+		
+		if (node.leftNode == null && node.rightNode == null)
+			return deleteChildless(parent , node) ;
+		else if(node.leftNode == null || node.rightNode == null)
+			return deleteSingleSon(parent , node) ;
+		else{
+			TreeNode tempnode = node.leftNode ;    // 这里可以用直接后继，即右孩子的最左分支。也可以用直接前驱，即 左孩子的最右分支
+			TreeNode tempParent = node.leftNode ;  //
+			while(tempnode.rightNode != null){
+				tempParent = tempnode ;
+				tempnode = tempnode.rightNode ;
+			}
+			node.data = tempnode.data ;
+			
+			if(tempnode.leftNode == null)
+				return deleteChildless(tempParent , tempnode) ;
+			else
+				return deleteSingleSon(tempParent , tempnode) ;
+		}
+			
+		
 		
 	}
 	

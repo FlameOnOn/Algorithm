@@ -1,3 +1,7 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 public class BinaryTree {
 	public TreeNode root ;
 	
@@ -153,6 +157,51 @@ public class BinaryTree {
 			
 		
 		
+	}
+	
+	public void preOrder(TreeNode root){
+		if (root != null){
+			System.out.println(root.data + "|") ;
+			preOrder(root.leftNode) ;  //窍门：从root开始做。第一个传入递归的参数肯定是root，下面的也是一样的。
+			preOrder(root.rightNode) ;
+		}
+	}
+	
+	public void inOrder(TreeNode root){
+		if (root != null){
+			inOrder(root.leftNode) ;
+			System.out.println(root.data + "|");
+			inOrder(root.rightNode) ;
+		}
+	}
+	
+	public void postOrder(TreeNode root){
+		if (root != null){
+			postOrder(root.leftNode) ;
+			postOrder(root.rightNode) ;
+			System.out.println(root.data + "|");
+		}
+	}
+	
+	//我用非递归的遍历方式来返回一个队列，或者数组。递归的方式也可以返回一个数组或者栈。
+	public Queue<Integer> preOrderNonRecursive(TreeNode root){
+		if(root == null)
+			return null;
+		
+		Stack<TreeNode> stack = new Stack<TreeNode>() ;
+		Queue<Integer> result = new LinkedList<Integer>() ;
+		TreeNode temp = root ;
+		stack.push(temp) ;
+		while(!stack.isEmpty()){
+			TreeNode node = stack.pop() ;
+			result.add(node.data) ;
+			if(node.rightNode != null)
+				stack.push(node.rightNode) ;
+			if(node.leftNode != null)
+				stack.push(node.leftNode) ;
+		}
+		
+		return result ;
 	}
 	
 }

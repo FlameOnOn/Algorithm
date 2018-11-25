@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -202,6 +203,74 @@ public class BinaryTree {
 		}
 		
 		return result ;
+	}
+	
+	public Queue<Integer> postOrderNonRecursive(TreeNode root) {
+		if(root == null)
+			return null;
+		
+		Stack<TreeNode> stack = new Stack<TreeNode>() ;
+		stack.push(root) ;
+		HashMap<Integer , Boolean> hasPushedItsSons = new HashMap<Integer , Boolean>() ;
+		Queue<Integer> result = new LinkedList<Integer>() ;
+		while(!stack.isEmpty()){
+			TreeNode top = stack.peek() ;
+			if(hasPushedItsSons.get(top.data) == null){
+				if (top.rightNode != null){
+					stack.push(top.rightNode) ;
+					if(hasPushedItsSons.get(top) == null)
+						hasPushedItsSons.put(top.data, true) ;
+				}
+				if (top.leftNode != null){
+					stack.push(top.leftNode) ;
+					if(hasPushedItsSons.get(top.data) == null)
+						hasPushedItsSons.put(top.data, true) ;
+				}
+				
+				if(top.leftNode == null && top.rightNode == null){
+					result.add(stack.pop().data) ;
+				}
+			}else{
+				result.add(stack.pop().data) ;
+			}
+		}
+		return result ;
+	}
+	
+	public Queue<Integer> inOrderNonRecursive(TreeNode root){
+		if (root == null)
+			return null;
+		
+		Stack<TreeNode> stack = new Stack<TreeNode>() ;
+		stack.push(root) ;
+		HashMap<Integer , Boolean> hasPushedItsSons = new HashMap<Integer , Boolean>() ;
+		Queue<Integer> result = new LinkedList<Integer>() ;
+		
+		while(!stack.isEmpty()){
+			TreeNode top = stack.peek() ;
+			if(hasPushedItsSons.get(top.data) == null){
+				if(top.rightNode != null){
+					stack.pop() ;
+					stack.push(top.rightNode) ;
+					stack.push(top) ;
+					hasPushedItsSons.put(top.data, true) ;
+				}
+				if(top.leftNode != null){
+					stack.push(top.leftNode) ;
+					if(hasPushedItsSons.get(top.data) == null){
+						hasPushedItsSons.put(top.data, true) ;
+					}
+				}
+				if(top.leftNode == null && top.rightNode == null){
+					result.add(stack.pop().data) ;
+				}
+			}else{
+				result.add(stack.pop().data) ;
+			}
+		}
+		
+		return result ;
+		
 	}
 	
 }

@@ -60,7 +60,7 @@ public class BinaryTree {
 	}
 	
 	public TreeNode searchRecursive(TreeNode node , int value){
-		if(value == node.data || node == null)
+		if(node == null || value == node.data)
 			return node ;
 		else if(value > node.data)
 			return searchRecursive(node.rightNode , value) ;
@@ -68,14 +68,19 @@ public class BinaryTree {
 			return searchRecursive(node.leftNode , value) ;
 	}
 	
-	public boolean insertRecursive(TreeNode node , int value){
+	public boolean insertRecursive(TreeNode parent , TreeNode node , int value){
 		if(node == null){
 			node = new TreeNode(value , null , null) ;
+			if(parent.rightNode ==null){
+				parent.rightNode = node ;
+			}else{
+				parent.leftNode = node ;
+			}
 			return true ;
 		}else if(value > node.data){
-			return insertRecursive(node.rightNode , value) ;
+			return insertRecursive(node , node.rightNode , value) ;
 		}else if(value < node.data){
-			return insertRecursive(node.leftNode , value) ;
+			return insertRecursive(node , node.leftNode , value) ;
 		}
 		return false ; //如果节点已经存在，就返回false。
 		
@@ -86,7 +91,7 @@ public class BinaryTree {
 			root = null ;
 			return true ;
 		}
-		
+				
 		if(parent.leftNode == node){
 			parent.leftNode = null ;
 			return true ;
@@ -124,16 +129,15 @@ public class BinaryTree {
 		TreeNode parent = root ;
 		while(node != null){
 			if (node.data < value){
+				parent = node ;
 				node = node.rightNode ;
-				parent = node ;
 			}else if (node.data > value){
-				node = node.leftNode ;
 				parent = node ;
+				node = node.leftNode ;
 			}else{
 				break ;
 			}
 		}
-		
 		if(node == null)
 			return false ;
 		
@@ -143,7 +147,7 @@ public class BinaryTree {
 			return deleteSingleSon(parent , node) ;
 		else{
 			TreeNode tempnode = node.leftNode ;    // 这里可以用直接后继，即右孩子的最左分支。也可以用直接前驱，即 左孩子的最右分支
-			TreeNode tempParent = node.leftNode ;  //
+			TreeNode tempParent = node ;  //
 			while(tempnode.rightNode != null){
 				tempParent = tempnode ;
 				tempnode = tempnode.rightNode ;
@@ -162,7 +166,7 @@ public class BinaryTree {
 	
 	public void preOrder(TreeNode root){
 		if (root != null){
-			System.out.println(root.data + "|") ;
+			System.out.print(root.data + "|") ;
 			preOrder(root.leftNode) ;  //窍门：从root开始做。第一个传入递归的参数肯定是root，下面的也是一样的。
 			preOrder(root.rightNode) ;
 		}
@@ -171,7 +175,7 @@ public class BinaryTree {
 	public void inOrder(TreeNode root){
 		if (root != null){
 			inOrder(root.leftNode) ;
-			System.out.println(root.data + "|");
+			System.out.print(root.data + "|");
 			inOrder(root.rightNode) ;
 		}
 	}
@@ -180,7 +184,7 @@ public class BinaryTree {
 		if (root != null){
 			postOrder(root.leftNode) ;
 			postOrder(root.rightNode) ;
-			System.out.println(root.data + "|");
+			System.out.print(root.data + "|");
 		}
 	}
 	

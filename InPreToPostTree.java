@@ -56,3 +56,52 @@ public class InPreToPostTree {
 	}
 
 }
+/*
+ggggggggggggggg0 7 0 7
+test 4
+root is 4 left tree length is 4
+root is 4 right tree length is 3
+enter left tree 4
+ggggggggggggggg1 4 0 3
+test 1
+root is 1 left tree length is 1
+root is 1 right tree length is 2
+enter left tree 1
+ggggggggggggggg2 2 0 0
+haha2 2 0 0
+leave left tree 1
+walalaallalalalalaal 1
+enter right tree 1
+ggggggggggggggg3 3 2 3
+test 3
+root is 3 left tree length is 1
+root is 3 right tree length is 0
+enter left tree 3
+ggggggggggggggg4 4 2 2
+haha4 4 2 2
+leave left tree 3
+walalaallalalalalaal 3
+reached herereached herereached herereached herereached herereached here
+leave right tree 1
+reached herereached herereached herereached herereached herereached here
+leave left tree 4
+walalaallalalalalaal 4
+enter right tree 4
+ggggggggggggggg5 7 5 7
+test 6
+root is 6 left tree length is 1
+root is 6 right tree length is 1
+enter left tree 6
+ggggggggggggggg6 6 5 5
+haha6 6 5 5
+leave left tree 6
+walalaallalalalalaal 6
+enter right tree 6
+ggggggggggggggg7 7 7 7
+haha7 7 7 7
+leave right tree 6
+reached herereached herereached herereached herereached herereached here
+leave right tree 4
+reached herereached herereached herereached herereached herereached here
+A |E |F |D |H |Z |M |G |
+*/

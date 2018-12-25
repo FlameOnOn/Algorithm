@@ -1213,3 +1213,4 @@ decision_function_shape: ovr，one_vs_rest。
 得到三个SVM，根据得分大小，进行分类。
 SVM多分类器实现，用若干个二分类器，合成一个多分类器
 svm的核函数使用的是高斯RBF, decistion function shape使用的是ovr: one-vs-rest，如果是4分类，则会输出多行4列的矩阵。还有一个类别是ovo: one-vs-one，从四个类别之间两两之间做分类器，其实需要6个值（12，13，14，23，24，34）。即decision_function输出会是多行6列的矩阵。取得分最大的列索引为分配的类别
+plsa真的得到主题了。

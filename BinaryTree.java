@@ -71,7 +71,7 @@ public class BinaryTree {
 	public boolean insertRecursive(TreeNode parent , TreeNode node , int value){
 		if(node == null){
 			node = new TreeNode(value , null , null) ;
-			if(parent.rightNode ==null){
+			if(parent.data < value){
 				parent.rightNode = node ;
 			}else{
 				parent.leftNode = node ;

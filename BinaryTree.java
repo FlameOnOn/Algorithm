@@ -222,7 +222,7 @@ public class BinaryTree {
 			if(hasPushedItsSons.get(top.data) == null){
 				if (top.rightNode != null){
 					stack.push(top.rightNode) ;
-					if(hasPushedItsSons.get(top) == null)
+					if(hasPushedItsSons.get(top.data) == null)
 						hasPushedItsSons.put(top.data, true) ;
 				}
 				if (top.leftNode != null){
